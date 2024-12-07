@@ -25,7 +25,6 @@ The project uses a dataset containing labeled text data, where each sample is cl
 - **Hate Speech**
 - **Non-Hate Speech**
 
-If you use a specific dataset, mention its source here (e.g., [Kaggle](https://www.kaggle.com/) or a publicly available dataset).
 
 ## Project Workflow
 
