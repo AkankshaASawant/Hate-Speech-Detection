@@ -83,7 +83,7 @@ The project uses a dataset containing labeled text data, where each sample is cl
 2. Open `Hate_Speech_Detection.ipynb` and run the cells sequentially.
 
 ## Results
-- The final model achieved a classification accuracy of **X%** on the test set.
+- The final model achieved a classification accuracy of **94.30%** on the test set.
 - Performance metrics (e.g., F1-score) are included in the notebook for detailed analysis.
 
 ## Technologies Used
