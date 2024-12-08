@@ -1,96 +1,122 @@
 # Hate Speech Detection
 
-This project involves the implementation of a machine learning pipeline to detect hate speech in text data. The goal is to classify text as hate speech or non-hate speech using natural language processing (NLP) techniques and machine learning models. The project is structured to include data preprocessing, exploratory data analysis (EDA), feature engineering, and model building.
+## Overview
+This project is a Hate Speech Detection model that analyzes text data from Twitter to classify it into three categories:
+- **Hate Speech**
+- **Offensive Language**
+- **No Hate or Offensive Language**
+
+The project uses a Decision Tree Classifier for building the model and includes data cleaning, feature extraction, and evaluation.
 
 ---
 
 ## Table of Contents
-
-1. [Introduction](#introduction)
-2. [Dataset](#dataset)
-3. [Project Workflow](#project-workflow)
-4. [Key Features](#key-features)
-5. [Setup and Usage](#setup-and-usage)
-6. [Results](#results)
-7. [Technologies Used](#technologies-used)
-8. [Future Work](#future-work)
+- [Project Workflow](#project-workflow)
+- [Technologies Used](#technologies-used)
+- [Dataset Information](#dataset-information)
+- [Setup Instructions](#setup-instructions)
+- [Key Features](#key-features)
+- [Model Evaluation](#model-evaluation)
+- [Usage](#usage)
+- [Output](#output)
+- [Contributors](#contributors)
 
 ---
 
-## Introduction
-Hate speech is a significant issue in online platforms, leading to the need for automated detection systems. This project demonstrates a machine learning-based approach for hate speech detection, utilizing NLP techniques to preprocess text data and train classification models.
-
-## Dataset
-The project uses a dataset containing labeled text data, where each sample is classified as either:
-- **Hate Speech**
-- **Non-Hate Speech**
-
-
 ## Project Workflow
+1. **Data Loading**: Load the dataset (`TwitterHate.csv`) containing tweets and their labels.
+2. **Data Preprocessing**:
+   - Remove null values.
+   - Map numerical labels to their respective categories.
+   - Clean the text data (remove URLs, punctuation, digits, and stopwords; perform stemming).
+3. **Feature Extraction**:
+   - Convert text data into a numerical format using `CountVectorizer`.
+4. **Model Building**:
+   - Use a Decision Tree Classifier to train the model.
+5. **Model Evaluation**:
+   - Evaluate the model using a confusion matrix and accuracy score.
+6. **Prediction**:
+   - Test the model on a sample text input.
 
-1. **Data Preprocessing**
-   - Handling missing values.
-   - Text cleaning (e.g., removing special characters, converting to lowercase).
-   - Tokenization and lemmatization.
+---
 
-2. **Exploratory Data Analysis (EDA)**
-   - Analyzing class distribution.
-   - Visualizing word frequencies and other text characteristics.
+## Technologies Used
+- **Programming Language**: Python
+- **Libraries**:
+  - `pandas`
+  - `numpy`
+  - `nltk`
+  - `sklearn`
+  - `matplotlib`
+  - `seaborn`
 
-3. **Feature Engineering**
-   - Extracting features using TF-IDF (Term Frequency-Inverse Document Frequency).
+---
 
-4. **Model Building**
-   - Training machine learning models such as Logistic Regression, Support Vector Machines (SVM), etc.
-   - Evaluating models using metrics like accuracy, precision, recall, and F1-score.
+## Dataset Information
+- **File Name**: `TwitterHate.csv`
+- **Columns**:
+  - `tweet`: The text of the tweet.
+  - `label`: The classification of the tweet into the categories listed above.
 
-5. **Prediction and Evaluation**
-   - Testing the best model on unseen data.
-   - Generating classification reports.
+---
 
-## Key Features
-- Preprocessing of text data for hate speech detection.
-- Use of TF-IDF for feature extraction.
-- Implementation and comparison of multiple machine learning models.
-- Visualization of EDA insights.
-
-## Setup and Usage
-
-### Prerequisites
-- Python 3.7+
-- Jupyter Notebook
-- Libraries: `pandas`, `numpy`, `matplotlib`, `seaborn`, `scikit-learn`, `nltk`
-
-### Installation
-1. Clone this repository:
+## Setup Instructions
+1. Clone this repository.
    ```bash
    git clone https://github.com/yourusername/hate-speech-detection.git
    ```
-2. Navigate to the project directory:
+2. Navigate to the project directory.
    ```bash
    cd hate-speech-detection
    ```
-3. Install the required packages:
+3. Install required libraries.
    ```bash
    pip install -r requirements.txt
    ```
+4. Place the `TwitterHate.csv` file in the project directory.
+5. Run the `HateSpeechDetection.ipynb` file to execute the code.
 
-### Running the Notebook
-1. Launch Jupyter Notebook:
-   ```bash
-   jupyter notebook
-   ```
-2. Open `Hate_Speech_Detection.ipynb` and run the cells sequentially.
+---
 
-## Results
-- The final model achieved a classification accuracy of **94.30%** on the test set.
-- Performance metrics (e.g., F1-score) are included in the notebook for detailed analysis.
+## Key Features
+- **Data Cleaning**: Preprocess tweets by removing unnecessary characters, URLs, and stopwords, and apply stemming to standardize words.
+- **Feature Engineering**: Convert text data into a bag-of-words representation using `CountVectorizer`.
+- **Machine Learning Model**: Build and train a Decision Tree Classifier.
+- **Visualization**: Generate a confusion matrix heatmap to visualize the model’s performance.
 
-## Technologies Used
-- **Python**: Programming language.
-- **scikit-learn**: Machine learning library.
-- **nltk**: Natural language processing library.
-- **matplotlib**, **seaborn**: Visualization tools.
+---
+
+## Model Evaluation
+- **Confusion Matrix**:
+  ```
+  [[9572,  234],
+   [ 367,  375]]
+  ```
+- **Accuracy Score**: 94.3%
+
+---
+
+## Usage
+### Sample Prediction
+Use the following sample code to test a custom input:
+```python
+sample = "Let's unite and kill all the people who are protesting against the government"
+sample = clean_data(sample)
+data1 = cv.transform([sample]).toarray()
+prediction = dt.predict(data1)
+print(prediction)
+```
+---
+
+## Output
+The model predicts the category of the input text correctly. For the given sample, it detects hate speech.
+
+---
+
+## Contributors
+This project was developed by **Akanksha Sawant**. Feel free to contribute or reach out with any suggestions or feedback.
+
+---
 
 ## Future Work
 - Integrate deep learning models (e.g., LSTM, BERT) for better performance.
